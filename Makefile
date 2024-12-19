@@ -6,15 +6,15 @@
 #    By: bepoisso <bepoisso@student.42perpignan.    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/12/19 14:07:44 by bepoisso          #+#    #+#              #
-#    Updated: 2024/12/19 14:07:56 by bepoisso         ###   ########.fr        #
+#    Updated: 2024/12/19 15:39:32 by bepoisso         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 #_________________VARIABLE_________________
 
 NAME = pipex
-CC= gcc
-CFLAGS = -Wall -Wextra -Werror -I$(INC_DIR)
+CC = gcc
+CFLAGS = -Wall -Wextra -I$(INC_DIR)
 
 #_________________FILES_________________
 
@@ -22,7 +22,10 @@ SRC_DIR = ./srcs
 OBJ_DIR = ./objs
 INC_DIR = ./includes
 
-SRC_FILES=\
+SRC_FILES = \
+	pipex.c \
+	pipes.c \
+	utiles.c \
 
 SRCS = $(addprefix $(SRC_DIR)/, $(SRC_FILES))
 OBJS = $(addprefix $(OBJ_DIR)/, $(SRC_FILES:.c=.o))
@@ -30,13 +33,13 @@ OBJS = $(addprefix $(OBJ_DIR)/, $(SRC_FILES:.c=.o))
 #_________________RULES_________________
 
 all: $(NAME)
-	$(CC) $(CFLAGS) $(NAME)
 
 $(NAME): $(OBJS)
 	@make all -C libft
+	$(CC) $(CFLAGS) $(OBJS) -Llibft -lft -o $(NAME)
 
-$(OBJS): $(SRCS) | $(OBJ_DIR)
-	@$(CC) $(CFLAGS) -c $< -o $@
+$(OBJ_DIR)/%.o: $(SRC_DIR)/%.c | $(OBJ_DIR)
+	$(CC) $(CFLAGS) -c $< -o $@
 
 $(OBJ_DIR):
 	@mkdir -p $(OBJ_DIR)
@@ -47,7 +50,7 @@ clean:
 
 fclean: clean
 	@make fclean -C libft
-	@rm -rf $(NAME)
+	@rm -f $(NAME)
 
 re: fclean all
 
