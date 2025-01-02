@@ -6,12 +6,13 @@
 /*   By: bepoisso <bepoisso@student.42perpignan.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/02 17:49:06 by bepoisso          #+#    #+#             */
-/*   Updated: 2025/01/02 17:51:07 by bepoisso         ###   ########.fr       */
+/*   Updated: 2025/01/02 18:01:46 by bepoisso         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/pipex.h"
 
+// Check if files exist with right access
 void	check_files(char *infile, char *outfile)
 {
 	int	fd;
@@ -24,6 +25,7 @@ void	check_files(char *infile, char *outfile)
 	close(fd);
 }
 
+// Get the correct line of envp with the key_word (char *key)
 char	*get_env_value(char **envp, char *key)
 {
 	int	key_len;
@@ -38,6 +40,7 @@ char	*get_env_value(char **envp, char *key)
 	return (NULL);
 }
 
+// Split the paths into tab of char with all path and add '/' and the command
 char	**get_paths(char *big_paths, char *cmd)
 {
 	char	**splited_path;
@@ -57,6 +60,7 @@ char	**get_paths(char *big_paths, char *cmd)
 	return (splited_path);
 }
 
+// Check what paths is correct and have right access
 char	*get_path_cmd(char *cmd, char **envp)
 {
 	int		i;
@@ -82,6 +86,7 @@ char	*get_path_cmd(char *cmd, char **envp)
 	return (result);
 }
 
+// Check if the path is good if not put error
 void	check_cmd(char **cmd1, char **envp)
 {
 	char	*cmd_path;
@@ -92,6 +97,7 @@ void	check_cmd(char **cmd1, char **envp)
 	*cmd1 = cmd_path;
 }
 
+// Check if all arg are valide
 void	check_args(int ac, char ***av, char **envp)
 {
 	char	*temp;
