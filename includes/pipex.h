@@ -6,7 +6,7 @@
 /*   By: bepoisso <bepoisso@student.42perpignan.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/19 15:31:38 by bepoisso          #+#    #+#             */
-/*   Updated: 2024/12/19 15:45:07 by bepoisso         ###   ########.fr       */
+/*   Updated: 2025/01/02 11:33:41 by bepoisso         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@
 # include <stdlib.h>
 # include <stdio.h>
 # include <string.h>
+# include <fcntl.h>
 
 void	ft_perror(char *s, int error_code);
 
