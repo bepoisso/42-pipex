@@ -6,7 +6,7 @@
 /*   By: bepoisso <bepoisso@student.42perpignan.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/02 17:49:06 by bepoisso          #+#    #+#             */
-/*   Updated: 2025/01/02 18:01:46 by bepoisso         ###   ########.fr       */
+/*   Updated: 2025/01/02 19:14:02 by bepoisso         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,10 +18,10 @@ void	check_files(char *infile, char *outfile)
 	int	fd;
 
 	if (access(infile, R_OK) == -1)
-		ft_perror("Error\nFail access to infile\n", 1);
+		ft_perror("Error\nFail access to infile\n");
 	fd = open(outfile, O_WRONLY);
 	if (fd == -1)
-		ft_perror("Error\nFail access to outfile\n", 1);
+		ft_perror("Error\nFail access to outfile\n");
 	close(fd);
 }
 
@@ -93,7 +93,7 @@ void	check_cmd(char **cmd1, char **envp)
 
 	cmd_path = get_path_cmd(*cmd1, envp);
 	if (cmd_path == NULL)
-		ft_perror("Error\nFail to find cmd1\n", 1);
+		ft_perror("Error\nFail to find cmd1\n");
 	*cmd1 = cmd_path;
 }
 
@@ -103,7 +103,7 @@ void	check_args(int ac, char ***av, char **envp)
 	char	*temp;
 
 	if (ac != 5)
-		ft_perror("Error\nNeed 4 arguments\n", 1);
+		ft_perror("Error\nNeed 4 arguments\n");
 	check_files((*av)[1], (*av)[4]);
 	if (access((*av)[2], X_OK) != 0)
 		check_cmd(&(*av)[2], envp);

@@ -6,7 +6,7 @@
 #    By: bepoisso <bepoisso@student.42perpignan.    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/12/19 14:07:44 by bepoisso          #+#    #+#              #
-#    Updated: 2025/01/02 17:49:31 by bepoisso         ###   ########.fr        #
+#    Updated: 2025/01/02 19:54:31 by bepoisso         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -28,6 +28,7 @@ SRC_FILES = \
 	pipes.c \
 	utiles.c \
 	args.c\
+	redirect.c\
 
 SRCS = $(addprefix $(SRC_DIR)/, $(SRC_FILES))
 OBJS = $(addprefix $(OBJ_DIR)/, $(SRC_FILES:.c=.o))
@@ -61,5 +62,8 @@ debug: re
 
 val:
 	@valgrind --leak-check=full --track-origins=yes --show-leak-kinds=all ./$(NAME) $(ARGS)
+
+run: re
+	./$(NAME) $(ARGS)
 
 .PHONY: all clean fclean re
