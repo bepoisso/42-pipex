@@ -6,7 +6,7 @@
 #    By: bepoisso <bepoisso@student.42perpignan.    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/12/19 14:07:44 by bepoisso          #+#    #+#              #
-#    Updated: 2025/01/02 17:39:10 by bepoisso         ###   ########.fr        #
+#    Updated: 2025/01/02 17:49:31 by bepoisso         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -27,6 +27,7 @@ SRC_FILES = \
 	pipex.c \
 	pipes.c \
 	utiles.c \
+	args.c\
 
 SRCS = $(addprefix $(SRC_DIR)/, $(SRC_FILES))
 OBJS = $(addprefix $(OBJ_DIR)/, $(SRC_FILES:.c=.o))
