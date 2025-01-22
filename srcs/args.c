@@ -6,24 +6,11 @@
 /*   By: bepoisso <bepoisso@student.42perpignan.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/02 17:49:06 by bepoisso          #+#    #+#             */
-/*   Updated: 2025/01/02 19:14:02 by bepoisso         ###   ########.fr       */
+/*   Updated: 2025/01/22 08:14:24 by bepoisso         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/pipex.h"
-
-// Check if files exist with right access
-void	check_files(char *infile, char *outfile)
-{
-	int	fd;
-
-	if (access(infile, R_OK) == -1)
-		ft_perror("Error\nFail access to infile\n");
-	fd = open(outfile, O_WRONLY);
-	if (fd == -1)
-		ft_perror("Error\nFail access to outfile\n");
-	close(fd);
-}
 
 // Get the correct line of envp with the key_word (char *key)
 char	*get_env_value(char **envp, char *key)
@@ -72,6 +59,7 @@ char	*get_path_cmd(char *cmd, char **envp)
 	result = NULL;
 	while (paths[i])
 	{
+		ft_printf("%s\n", paths[i]);
 		if (access(paths[i], X_OK) == 0)
 		{
 			result = ft_strdup(paths[i]);

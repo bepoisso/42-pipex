@@ -6,7 +6,7 @@
 #    By: bepoisso <bepoisso@student.42perpignan.    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/12/19 14:07:44 by bepoisso          #+#    #+#              #
-#    Updated: 2025/01/02 19:54:31 by bepoisso         ###   ########.fr        #
+#    Updated: 2025/01/22 07:34:39 by bepoisso         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -56,14 +56,5 @@ fclean: clean
 	@rm -f $(NAME)
 
 re: fclean all
-
-debug: re
-	gdb -tui -q ./$(NAME)
-
-val:
-	@valgrind --leak-check=full --track-origins=yes --show-leak-kinds=all ./$(NAME) $(ARGS)
-
-run: re
-	./$(NAME) $(ARGS)
 
 .PHONY: all clean fclean re

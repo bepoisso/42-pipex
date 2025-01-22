@@ -6,11 +6,24 @@
 /*   By: bepoisso <bepoisso@student.42perpignan.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/19 15:26:00 by bepoisso          #+#    #+#             */
-/*   Updated: 2025/01/02 19:49:40 by bepoisso         ###   ########.fr       */
+/*   Updated: 2025/01/22 07:46:48 by bepoisso         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/pipex.h"
+
+// Check if files exist with right access
+void	check_files(char *infile, char *outfile)
+{
+	int	fd;
+
+	if (access(infile, R_OK) == -1)
+		ft_perror("Error\nFail access to infile\n");
+	fd = open(outfile, O_WRONLY);
+	if (fd == -1)
+		ft_perror("Error\nFail access to outfile\n");
+	close(fd);
+}
 
 // Print a error and exit if this command is call.
 // this command is made to exit properly

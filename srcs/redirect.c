@@ -6,13 +6,13 @@
 /*   By: bepoisso <bepoisso@student.42perpignan.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/02 19:06:51 by bepoisso          #+#    #+#             */
-/*   Updated: 2025/01/02 19:51:16 by bepoisso         ###   ########.fr       */
+/*   Updated: 2025/01/22 07:45:18 by bepoisso         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/pipex.h"
 
-int	open_file(char *file, int *fd, int	flag)
+int	open_file(char *file, int *fd, int flag)
 {
 	*fd = open(file, flag);
 	if (*fd == -1)
@@ -23,7 +23,7 @@ int	open_file(char *file, int *fd, int	flag)
 	return (0);
 }
 
-int	redirect_to_fd(int old_fd, int	new_fd)
+int	redirect_to_fd(int old_fd, int new_fd)
 {
 	if (dup2(old_fd, new_fd) < 0)
 	{
@@ -41,7 +41,6 @@ int	handle_redirect(t_pipex *px)
 
 	if (open_file(px->infile, &in_fd, O_RDONLY))
 		return (1);
-		
 	if (open_file(px->outfile, &out_fd, O_WRONLY | O_TRUNC))
 	{
 		close(in_fd);
