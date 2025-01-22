@@ -6,7 +6,7 @@
 /*   By: bepoisso <bepoisso@student.42perpignan.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/19 15:31:38 by bepoisso          #+#    #+#             */
-/*   Updated: 2025/01/22 07:50:36 by bepoisso         ###   ########.fr       */
+/*   Updated: 2025/01/22 13:51:20 by bepoisso         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,8 +27,10 @@ typedef struct s_pipex
 {
 	char	*infile;
 	char	*outfile;
-	char	*cmd1;
-	char	*cmd2;
+	char	**cmd1;
+	char	*path_cmd1;
+	char	**cmd2;
+	char	*path_cmd2;
 	char	**envp;
 }	t_pipex;
 
@@ -49,7 +51,7 @@ int		handle_redirect(t_pipex *px);
 
 //___________Utils___________
 void	ft_perror(char *s);
-void	free_cmds(char *cmd1, char *cmd2);
+void	free_cmds(char **cmd1, char **cmd2);
 t_pipex	init_pipex(char *infile, char *cmd1, char *cmd2, char *outfile);
 
 //___________Pipes___________

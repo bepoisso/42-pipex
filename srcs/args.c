@@ -6,7 +6,7 @@
 /*   By: bepoisso <bepoisso@student.42perpignan.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/02 17:49:06 by bepoisso          #+#    #+#             */
-/*   Updated: 2025/01/22 08:14:24 by bepoisso         ###   ########.fr       */
+/*   Updated: 2025/01/22 13:51:56 by bepoisso         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,13 +53,14 @@ char	*get_path_cmd(char *cmd, char **envp)
 	int		i;
 	char	**paths;
 	char	*result;
+	char	**temp;
 
 	i = 0;
-	paths = get_paths(get_env_value(envp, "PATH"), cmd);
+	temp = ft_split(cmd, ' ');
+	paths = get_paths(get_env_value(envp, "PATH"), temp[0]);
 	result = NULL;
 	while (paths[i])
 	{
-		ft_printf("%s\n", paths[i]);
 		if (access(paths[i], X_OK) == 0)
 		{
 			result = ft_strdup(paths[i]);
@@ -69,6 +70,7 @@ char	*get_path_cmd(char *cmd, char **envp)
 			i++;
 	}
 	free_2d(paths);
+	free_2d(temp);
 	if (!result)
 		return (NULL);
 	return (result);

@@ -6,7 +6,7 @@
 /*   By: bepoisso <bepoisso@student.42perpignan.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/19 15:26:00 by bepoisso          #+#    #+#             */
-/*   Updated: 2025/01/22 07:46:48 by bepoisso         ###   ########.fr       */
+/*   Updated: 2025/01/22 13:15:16 by bepoisso         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,18 +33,18 @@ void	ft_perror(char *s)
 	exit(EXIT_FAILURE);
 }
 
-void	free_cmds(char *cmd1, char *cmd2)
+void	free_cmds(char **cmd1, char **cmd2)
 {
-	free(cmd1);
-	free(cmd2);
+	free_2d(cmd1);
+	free_2d(cmd2);
 }
 
 t_pipex	init_pipex(char *infile, char *cmd1, char *cmd2, char *outfile)
 {
 	t_pipex	px;
 
-	px.cmd1 = cmd1;
-	px.cmd2 = cmd2;
+	px.cmd1 = ft_split(cmd1, ' ');
+	px.cmd2 = ft_split(cmd2, ' ');
 	px.infile = infile;
 	px.outfile = outfile;
 	px.envp = NULL;
