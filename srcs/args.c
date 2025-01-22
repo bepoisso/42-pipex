@@ -6,7 +6,7 @@
 /*   By: bepoisso <bepoisso@student.42perpignan.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/02 17:49:06 by bepoisso          #+#    #+#             */
-/*   Updated: 2025/01/22 13:51:56 by bepoisso         ###   ########.fr       */
+/*   Updated: 2025/01/22 15:44:05 by bepoisso         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,33 +77,36 @@ char	*get_path_cmd(char *cmd, char **envp)
 }
 
 // Check if the path is good if not put error
-void	check_cmd(char **cmd1, char **envp)
+void	check_cmd(char **cmd1, char **envp, t_pipex *px)
 {
 	char	*cmd_path;
 
 	cmd_path = get_path_cmd(*cmd1, envp);
 	if (cmd_path == NULL)
-		ft_perror("Error\nFail to find cmd1\n");
+		ft_perror("Error\nFail to find cmd1\n", px);
 	*cmd1 = cmd_path;
 }
 
 // Check if all arg are valide
-void	check_args(int ac, char ***av, char **envp)
+void	check_args(int ac, char ***av, char **envp, t_pipex *px)
 {
 	char	*temp;
 
 	if (ac != 5)
-		ft_perror("Error\nNeed 4 arguments\n");
-	check_files((*av)[1], (*av)[4]);
+	{
+		free_px(px);
+		ft_perror("Error\nNeed 4 arguments\n", px);
+	}
+	check_files((*av)[1], (*av)[4], px);
 	if (access((*av)[2], X_OK) != 0)
-		check_cmd(&(*av)[2], envp);
+		check_cmd(&(*av)[2], envp, px);
 	else
 	{
 		temp = (*av)[2];
 		(*av)[2] = ft_strdup(temp);
 	}
 	if (access((*av)[3], X_OK) != 0)
-		check_cmd(&(*av)[3], envp);
+		check_cmd(&(*av)[3], envp, px);
 	else
 	{
 		temp = (*av)[3];

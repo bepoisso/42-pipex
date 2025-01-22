@@ -6,7 +6,7 @@
 #    By: bepoisso <bepoisso@student.42perpignan.    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/12/19 14:07:44 by bepoisso          #+#    #+#              #
-#    Updated: 2025/01/22 14:12:40 by bepoisso         ###   ########.fr        #
+#    Updated: 2025/01/22 14:24:34 by bepoisso         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -57,7 +57,7 @@ fclean: clean
 
 re: fclean all
 
-#val:
-#	valgrind --track-fds=yes --trace-children=yes --leak-check=full --track-origins=yes --show-leak-kinds=all ./pipex infile "ls -l" "wc -l" outfile
+val:
+	valgrind --track-fds=yes --trace-children=yes --leak-check=full --track-origins=yes --show-leak-kinds=all ./pipex infile "ls -l" "wc -l" outfile
 
 .PHONY: all clean fclean re
