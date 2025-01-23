@@ -6,7 +6,7 @@
 #    By: bepoisso <bepoisso@student.42perpignan.    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/12/19 14:07:44 by bepoisso          #+#    #+#              #
-#    Updated: 2025/01/23 16:23:24 by bepoisso         ###   ########.fr        #
+#    Updated: 2025/01/23 16:46:55 by bepoisso         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,7 +15,8 @@
 NAME = pipex
 CC = gcc
 CFLAGS = -Wall -Wextra -Werror -g -I$(INC_DIR)
-ARGS = i "ls -l" "wc -l" o
+ARGS = i "cat -e" "cat -e" o
+VALARGS = --track-fds=yes --leak-check=full --track-origins=yes --show-leak-kinds=all --trace-children=yes
 
 #_________________FILES_________________
 
@@ -58,7 +59,7 @@ fclean: clean
 re: fclean all
 
 val:
-	valgrind --track-fds=yes --trace-children=yes --leak-check=full --track-origins=yes --show-leak-kinds=all ./$(NAME) $(ARGS)
+	valgrind $(VALARGS) ./$(NAME) $(ARGS)
 
 exec:
 	./$(NAME) $(ARGS)
