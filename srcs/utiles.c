@@ -6,7 +6,7 @@
 /*   By: bepoisso <bepoisso@student.42perpignan.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/19 15:26:00 by bepoisso          #+#    #+#             */
-/*   Updated: 2025/01/22 16:12:08 by bepoisso         ###   ########.fr       */
+/*   Updated: 2025/01/23 16:36:53 by bepoisso         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,10 @@ void	check_files(char *infile, char *outfile, t_pipex *px)
 {
 	int	fd;
 
-	if (access(infile, R_OK) == -1)
+	fd = open(infile, O_RDONLY);
+	if (fd == -1)
 		ft_perror("Error\nFail access to infile\n", px);
+	close(fd);
 	fd = open(outfile, O_WRONLY);
 	if (fd == -1)
 		ft_perror("Error\nFail access to outfile\n", px);
@@ -50,7 +52,6 @@ t_pipex	init_pipex(char *infile, char *cmd1, char *cmd2, char *outfile)
 	px.cmd2 = ft_split(cmd2, ' ');
 	px.infile = infile;
 	px.outfile = outfile;
-	px.envp = NULL;
 	return (px);
 }
 
