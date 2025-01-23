@@ -6,7 +6,7 @@
 /*   By: bepoisso <bepoisso@student.42perpignan.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/19 15:25:57 by bepoisso          #+#    #+#             */
-/*   Updated: 2025/01/23 17:03:16 by bepoisso         ###   ########.fr       */
+/*   Updated: 2025/01/23 17:12:20 by bepoisso         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,10 +16,15 @@ int	main(int ac, char **av, char **envp)
 {
 	t_pipex	px;
 
+	if (ac != 5)
+	{
+		ft_putstr_fd("Error\nNeed 4 arguments\n", 1);
+		exit(1);
+	}
 	ft_bzero(&px, sizeof(t_pipex));
 	px = init_pipex(av[1], av[2], av[3], av[4]);
 	px.envp = envp;
-	check_args(ac, &av, envp, &px);
+	check_args(&av, envp, &px);
 	px.path_cmd1 = av[2];
 	px.path_cmd2 = av[3];
 	pipex(&px);

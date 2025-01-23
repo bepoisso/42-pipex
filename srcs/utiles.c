@@ -6,7 +6,7 @@
 /*   By: bepoisso <bepoisso@student.42perpignan.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/19 15:26:00 by bepoisso          #+#    #+#             */
-/*   Updated: 2025/01/23 17:07:49 by bepoisso         ###   ########.fr       */
+/*   Updated: 2025/01/23 17:18:29 by bepoisso         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,8 +32,8 @@ void	check_files(char *infile, char *outfile, t_pipex *px)
 void	ft_perror(char *s, t_pipex *px)
 {
 	ft_putstr_fd(s, 1);
-	free_px(px);
 	free_cmds(px->cmd1, px->cmd2);
+	free_px(px);
 	exit(EXIT_FAILURE);
 }
 
@@ -49,6 +49,7 @@ t_pipex	init_pipex(char *infile, char *cmd1, char *cmd2, char *outfile)
 {
 	t_pipex	px;
 
+	ft_bzero(&px, sizeof(t_pipex));
 	px.cmd1 = ft_split(cmd1, ' ');
 	px.cmd2 = ft_split(cmd2, ' ');
 	px.infile = infile;

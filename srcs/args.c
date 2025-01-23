@@ -6,7 +6,7 @@
 /*   By: bepoisso <bepoisso@student.42perpignan.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/02 17:49:06 by bepoisso          #+#    #+#             */
-/*   Updated: 2025/01/23 17:08:38 by bepoisso         ###   ########.fr       */
+/*   Updated: 2025/01/23 17:11:18 by bepoisso         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,10 +88,8 @@ void	check_cmd(char **cmd1, char **envp, t_pipex *px)
 }
 
 // Check if all arg are valide
-void	check_args(int ac, char ***av, char **envp, t_pipex *px)
+void	check_args(char ***av, char **envp, t_pipex *px)
 {
-	if (ac != 5)
-		ft_perror("Error\nNeed 4 arguments\n", px);
 	check_files((*av)[1], (*av)[4], px);
 	if (access((*av)[2], X_OK) != 0)
 		check_cmd(&(*av)[2], envp, px);

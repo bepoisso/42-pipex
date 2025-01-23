@@ -6,7 +6,7 @@
 /*   By: bepoisso <bepoisso@student.42perpignan.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/19 15:31:38 by bepoisso          #+#    #+#             */
-/*   Updated: 2025/01/22 15:43:42 by bepoisso         ###   ########.fr       */
+/*   Updated: 2025/01/23 17:11:28 by bepoisso         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ char	*get_env_value(char **envp, char *key);
 char	**get_paths(char *big_paths, char *cmd);
 char	*get_path_cmd(char *cmd, char **envp);
 void	check_cmd(char **cmd1, char **envp, t_pipex *px);
-void	check_args(int ac, char ***av, char **envp, t_pipex *px);
+void	check_args(char ***av, char **envp, t_pipex *px);
 
 //___________Redirect___________
 int		open_file(char *file, int *fd, int flag);
