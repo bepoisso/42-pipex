@@ -6,7 +6,7 @@
 /*   By: bepoisso <bepoisso@student.42perpignan.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/19 15:26:00 by bepoisso          #+#    #+#             */
-/*   Updated: 2025/01/23 16:36:53 by bepoisso         ###   ########.fr       */
+/*   Updated: 2025/01/23 17:07:49 by bepoisso         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,7 @@ void	ft_perror(char *s, t_pipex *px)
 {
 	ft_putstr_fd(s, 1);
 	free_px(px);
+	free_cmds(px->cmd1, px->cmd2);
 	exit(EXIT_FAILURE);
 }
 
