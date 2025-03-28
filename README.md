@@ -11,6 +11,11 @@ Pipex is a project that introduces you to inter-process communication using pipe
   <img height="200" src="https://raw.githubusercontent.com/Benjamin-poisson/My_image_bank/refs/heads/main/pipex_success.png"  />
 </div>
 
+## Exemple
+<div align="center">
+  <img src="https://raw.githubusercontent.com/Benjamin-poisson/My_image_bank/refs/heads/main/pipex_exp.png"  />
+</div>
+
 ## Objectives
 
 The objective of Pipex is to recreate the behavior of the shell command:  
